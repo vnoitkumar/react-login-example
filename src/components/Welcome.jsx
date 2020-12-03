@@ -9,7 +9,7 @@ class Welcome extends Component {
   render() {
     const { username } = this.props;
 
-    return <h1>Welcome {username ? username : 'Guest'} </h1>;
+    return <h1>Welcome {username ? username : 'Guest'}</h1>;
   }
 }
 

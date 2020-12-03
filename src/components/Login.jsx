@@ -4,7 +4,7 @@ import reactIcon from '../assets/images/react-icon.svg';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../assets/styles/style.css';
 
-import Welcome from './Welcome';
+import Welcome from './Welcome1';
 
 class Login extends Component {
   state = {
