@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import reactIcon from '../assets/images/react-icon.svg';
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -7,11 +7,27 @@ import '../assets/styles/style.css';
 import Welcome from './Welcome1';
 
 function Login() {
+  const usernameRef = useRef(null);
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isUsernameValid, setIsUsernameValid] = useState(false);
 
-  useEffect(function () {}, []);
+  useEffect(function () {
+    usernameRef.current.focus();
+  }, []);
+
+  useEffect(
+    function () {
+      if (username.length > 3) {
+        setIsUsernameValid(true);
+      } else {
+        setIsUsernameValid(false);
+      }
+    },
+    [username]
+  );
 
   const handelChange = (event) => {
     switch (event.target.name) {
@@ -52,6 +68,7 @@ function Login() {
             <div className='form-group'>
               <label>Username</label>
               <input
+                ref={usernameRef}
                 name='username'
                 type='text'
                 className='form-control'
@@ -59,6 +76,12 @@ function Login() {
                 value={username}
                 onChange={handelChange}
               />
+
+              {!isUsernameValid && (
+                <small className='form-text' style={{ color: 'red' }}>
+                  Enter an valid Username
+                </small>
+              )}
             </div>
 
             <div className='form-group'>

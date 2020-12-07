@@ -7,3 +7,12 @@ function Welcome(props) {
 }
 
 export default Welcome;
+
+function Welcome1() {
+  return (
+    <>
+      <h1>Welcome</h1>
+      <p>Good morning!</p>
+    </>
+  );
+}
